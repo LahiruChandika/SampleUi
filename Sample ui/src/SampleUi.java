@@ -102,7 +102,7 @@ public class SampleUi {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.GRAY);
-		panel_1.setBounds(62, 10, 462, 539);
+		panel_1.setBounds(62, 10, 461, 539);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		

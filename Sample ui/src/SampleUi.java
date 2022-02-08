@@ -22,7 +22,12 @@ public class SampleUi {
 
 	private JFrame frame;
 	
-	private Acc_Info Acc_Info;
+	
+	private Acc_Info acc_Info;
+	private Project project;
+	private Notifications notifications;
+	private Notes notes;
+	private QRcode qrcode;
 
 	/**
 	 * Launch the application.
@@ -44,7 +49,16 @@ public class SampleUi {
 	 * Create the application.
 	 */
 	public SampleUi() {
+		
+		acc_Info = new Acc_Info();
+		project = new Project();
+		notifications = new Notifications();
+		notes = new Notes();
+		qrcode = new QRcode();
+		
 		initialize();
+			
+		
 	}
 
 	/**
@@ -57,7 +71,7 @@ public class SampleUi {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		Acc_Info = new Acc_Info();
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 52, 549);
@@ -70,8 +84,18 @@ public class SampleUi {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
+		
+		JPanel panelMainContent = new JPanel();
+		panelMainContent.setBackground(Color.DARK_GRAY);
+		panelMainContent.setBounds(51, 10, 461, 539);
+		frame.getContentPane().add(panelMainContent);
+		panelMainContent.setLayout(null);
+		
 		btnAcc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				panelMainContent.add(acc_Info);
+				
+				menuClicked(acc_Info);
 			}
 		});
 		
@@ -82,11 +106,25 @@ public class SampleUi {
 		panel.add(btnAcc);
 		
 		JButton btnProject = new JButton("");
+		btnProject.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelMainContent.add(project);
+				
+				menuClicked(project);
+			}
+		});
 		btnProject.setIcon(new ImageIcon("C:\\Users\\lahir\\OneDrive\\Desktop\\ui\\black-24dp\\2x\\baseline_menu_black_24dp.png"));
 		btnProject.setBounds(0, 62, 52, 52);
 		panel.add(btnProject);
 		
 		JButton btnNotice = new JButton("");
+		btnNotice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelMainContent.add(notifications);
+				
+				menuClicked(notifications);
+			}
+		});
 		btnNotice.setIcon(new ImageIcon("C:\\Users\\lahir\\OneDrive\\Desktop\\ui\\black-24dp\\2x\\baseline_campaign_black_24dp.png"));
 		btnNotice.setBounds(0, 115, 52, 52);
 		panel.add(btnNotice);
@@ -94,22 +132,35 @@ public class SampleUi {
 		JButton btnNote = new JButton("");
 		btnNote.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				panelMainContent.add(notes);
+				
+				menuClicked(notes);
 			}
 		});
 		btnNote.setIcon(new ImageIcon("C:\\Users\\lahir\\OneDrive\\Desktop\\ui\\black-24dp\\2x\\baseline_note_add_black_24dp.png"));
 		btnNote.setBounds(0, 169, 52, 52);
 		panel.add(btnNote);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.GRAY);
-		panel_1.setBounds(62, 10, 461, 539);
-		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelMainContent.add(qrcode);
+				
+				menuClicked(qrcode);
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\lahir\\OneDrive\\Desktop\\ui\\black-24dp\\2x\\baseline_qr_code_black_24dp.png"));
+		btnNewButton.setBounds(0, 222, 52, 52);
+		panel.add(btnNewButton);
+		
+		
+		
+		
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.DARK_GRAY);
 		panel_2.setForeground(Color.WHITE);
-		panel_2.setBounds(528, 10, 144, 539);
+		panel_2.setBounds(522, 10, 150, 539);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -147,5 +198,14 @@ public class SampleUi {
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Help content");
 		mnNewMenu_2.add(mntmNewMenuItem_4);
 		
+	}
+	public void menuClicked(JPanel panel) {
+		acc_Info.setVisible(false);
+		project.setVisible(false);
+		notifications.setVisible(false);
+		notes.setVisible(false);
+		qrcode.setVisible(false);
+		
+		panel.setVisible(true);
 	}
 }
